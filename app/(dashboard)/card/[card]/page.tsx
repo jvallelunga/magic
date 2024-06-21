@@ -6,6 +6,7 @@ import * as Query from "query";
 import ManaCost from "components/ManaCost";
 import Need from "./components/Need";
 import Have from "./components/Have";
+import Match from "./components/Match";
 
 export default function Page() {
   const params = useParams();
@@ -186,6 +187,8 @@ export default function Page() {
             dangerouslySetInnerHTML={{ __html: card.flavor_text }}
           />
         </div>}
+
+        <Match card={card} />
 
         {/* <div className="mt-8 border-t border-gray-200 pt-8">
           <h2 className="text-sm font-medium text-gray-900">Fabric &amp; Care</h2>
