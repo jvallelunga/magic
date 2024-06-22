@@ -4,19 +4,13 @@ import UserName from "../UserName";
 
 const Match = ({ card }) => {
   const { data: { user } = {} } = Query.Users.useCurrent();
-  const { data: needs } = Query.Needs.useMatch({ params: { where: JSON.stringify({
-    userId: user?.id,
+  const { data: needs } = Query.Needs.useSearch({ params: { where: JSON.stringify({
     scryfallId: card?.id
-  }) }}, {
-    enabled: !!user
-  });
+  }) }});
 
-  const { data: haves } = Query.Haves.useMatch({ params: { where: JSON.stringify({
-    userId: user?.id,
+  const { data: haves } = Query.Haves.useSearch({ params: { where: JSON.stringify({
     scryfallId: card?.id
-  }) }}, {
-    enabled: !!user
-  });
+  }) }});
 
   if (!needs?.length && !haves?.length) {
     return null;
@@ -24,18 +18,19 @@ const Match = ({ card }) => {
 
   return  (<div className="mt-10">
     <h2 className="text-sm font-medium text-gray-900">Matches</h2>
-    {needs?.length ? (<div className="prose prose-sm mt-4 text-gray-500">
+      {needs?.length ? (<div className="prose prose-sm mt-4 text-gray-500">
             <ul role="list">
               {needs.map((item) => (
-                <li key={item.scryfallId}>El usuario <b><UserName id={item.userId} /></b> tiene esta carta disponible</li>
+                <li key={item.scryfallId}>El usuario <b><UserName id={item.userId} /></b> esta buscando esta carta</li>
+                
                 
               ))}
             </ul>
           </div>) : null }
-    {haves?.length ? (<div className="prose prose-sm mt-4 text-gray-500">
+      {haves?.length ? (<div className="prose prose-sm mt-4 text-gray-500">
             <ul role="list">
               {haves.map((item) => (
-                <li key={item.scryfallId}>El usuario <b><UserName id={item.userId} /></b> esta buscando esta carta</li>
+                <li key={item.scryfallId}>El usuario <b><UserName id={item.userId} /></b> tiene esta carta disponible</li>
               ))}
             </ul>
           </div>) : null }

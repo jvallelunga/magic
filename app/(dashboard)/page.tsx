@@ -18,8 +18,8 @@ export default function Page() {
   }
 
   return (<div className="h-full w-full flex flex-col">
-    <div className="flex h-80 w-full items-center justify-center bg-indigo-600">
-      <Search className="w-1/2 h-12" onChange={handleChange} />
+    <div className="flex h-20 lg:h-80 w-full items-center justify-center bg-indigo-600 px-4">
+      <Search className="w-full lg:w-1/2 h-12" onChange={handleChange} />
     </div>
 
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
