@@ -10,7 +10,6 @@ export const useSearch = ({ params }, options = {}) => {
     queryKey: ["cards", "search", params],
     queryFn: async () => {
       const response = await fetch(`${url}?${search}`);
-      console.log("[DEBUG] repsonse", response);
       if (!response.ok) {
         if (response.status === 404) {
           return { total_cards: 0 };

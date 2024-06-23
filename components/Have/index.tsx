@@ -13,8 +13,6 @@ const Have: React.FC<CardProps> = ({ card, className }) => {
     scryfallId: card.scryfallId
   }) }});
 
-  console.log("[DATA] Query.Needs.useSearch", data);
-
   return (<div className={`group relative ${className}`}>
     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-96">
       <img src={card?.imageUri} alt={card?.name} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />

@@ -1,5 +1,4 @@
 const ManaCost = ({ className = "", cost }) => {
-  console.log("[DEBUG] ManaCost", cost);
   if (cost.length === 0) return null;
 
   const costs = cost.toLowerCase()

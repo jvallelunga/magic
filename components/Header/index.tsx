@@ -9,7 +9,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 
-import Session from "components/Session";
+import Session from "./components/Session";
 import Have from "./components/Have";
 import Need from "./components/Need";
 
@@ -39,10 +39,10 @@ export default function Header() {
           <Bars3Icon className="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
-      {user && <div className="hidden lg:flex lg:gap-x-12">
-        <Need />
-        <Have />
-      </div>}
+      <div className="hidden lg:flex lg:gap-x-12">
+        <Need user={user} className="text-sm font-semibold leading-6 text-gray-900" />
+        <Have user={user} className="text-sm font-semibold leading-6 text-gray-900" />
+      </div>
       <div className="hidden lg:flex lg:flex-1 lg:justify-end">
         <Session />
       </div>
@@ -70,10 +70,10 @@ export default function Header() {
         </div>
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">
-            {user && <div className="space-y-2 py-6">
-              <Need />
-              <Have />
-            </div>}
+            <div className="space-y-2 py-6">
+              <Need user={user} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" />
+              <Have user={user} className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" />
+            </div>
             <div className="py-6">
               <Session />
             </div>

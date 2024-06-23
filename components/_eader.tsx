@@ -12,8 +12,6 @@ const Header: React.FC = () => {
 
   const { data: session, status } = useSession();
 
-  console.log("[DEBUG] session", session);
-
   let left = (
     <div className="left">
       <Link href="/">

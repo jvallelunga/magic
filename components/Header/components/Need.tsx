@@ -2,21 +2,22 @@ import Link from 'next/link';
 
 import * as Query from "query";
 
-const Need = () => {
-  const { data: { user } = {} } = Query.Users.useCurrent();
+const Need = ({ className, user }) => {
   const { data } = Query.Needs.useMatch({ params: { where: JSON.stringify({
     userId: user?.id
   }) }}, {
     enabled: !!user
   });
 
+  if (!user) return null
 
-  return (<span className="relative inline-block">
-    <Link href="/need" className="text-sm font-semibold leading-6 text-gray-900">
-      Busco
-    </Link>
-    { data?.length ? <span className="absolute top-0 -right-2 block h-2 w-2 rounded-full bg-green-400 ring-2 ring-white" /> : null }
-  </span>);
+  return (
+    <Link href="/need" className={className}>
+      <span className="relative inline-block">
+        Busco
+        { data?.length ? <span className="absolute top-0 -right-2 block h-2 w-2 rounded-full bg-green-400 ring-2 ring-white" /> : null }
+      </span>
+    </Link>);
 }
 
 export default Need;

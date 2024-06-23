@@ -4,7 +4,6 @@ export const useSearch = ({ params }, options = {}) => {
   const url = "/api/have";
   const search = new URLSearchParams(params).toString();
 
-  console.log("[DEBUG] useSearch", { url, search });
   return useQuery({
     queryKey: ["have", "search", params],
     queryFn: async () => {
